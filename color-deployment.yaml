@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-webapp-color
+  #namespace: test1
+  labels:
+    app: simple-webapp-color
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-webapp-color
+  template:
+    metadata:
+      name: simple-webapp-color
+      labels:
+        app: simple-webapp-color
+    spec:
+      containers:
+        - name: simple-webapp-color
+          image: dockerkawao/simple-web-app:latest
+          volumeMounts:
+          - mountPath: "/data"
+            name: web
+      volumes:
+        - name: web
+          persistentVolumeClaim:
+            claimName: color-pvc

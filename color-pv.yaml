@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: color-pv
+  labels:
+    type: local
+spec:
+  storageClassName: local-storage-color
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /var/lib/docker/volumes/datawebapp/_data
+    #path: /var/lib/docker/volumes/datavolume/_data
+  persistentVolumeReclaimPolicy: Retain
+  
