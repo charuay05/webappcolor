@@ -18,7 +18,8 @@ spec:
     spec:
       containers:
         - name: simple-webapp-color
-          image: dockerkawao/simple-web-app:latest
+          #image: dockerkawao/simple-web-app:latest
+          image: dockerkawao/simple-web-app:{{BUILD_NUMBER}}
           volumeMounts:
           - mountPath: "/data"
             name: web
