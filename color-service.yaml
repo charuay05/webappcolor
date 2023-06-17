@@ -7,7 +7,7 @@ spec:
   ports:
     - port: 80
       targetPort: 8082
-      nodePort: 30202
+      #nodePort: 30202
   type: NodePort
   selector:
     app: simple-webapp-color
