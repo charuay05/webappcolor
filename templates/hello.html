@@ -12,12 +12,12 @@
   <h1>Hello, World!</h1>
 {% endif %}
 
-<h1>/templates/hello.html {{ contents }}!</h1>
-<h1>/data/testfile.txt {{ contents }}!</h1>
+<h1>/templates/hello.html </h1>
+<h1>/data/testfile.txt {{ txtcontents }}!</h1>
 
   {% if contents %}
   <textarea rows="10" cols="50">
-    {{ contents }}
+    {{ txtcontents }}
   </textarea>
   {% endif %}
 
