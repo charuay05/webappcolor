@@ -19,9 +19,11 @@ color_codes = {
 
 color = os.environ.get('APP_COLOR') or random.choice(["red","green","blue","blue2","darkblue","pink"])
 
-@app.route('/')
-def hello():
-    return render_template('index.html', utc_dt=datetime.datetime.utcnow())
-
+@app.route('/read_file')
+def read_file():
+    f = open("/data/testfile.txt")
+    contents = f.read()
+    return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
+    
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8082")
