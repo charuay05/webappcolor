@@ -20,7 +20,28 @@ pipeline {
         }
       }
     }
-    stage('Deploy') {
+    stage('Deploy Storage Class') {
+      steps {
+          withKubeConfig([credentialsId: 'kubeconfig']) {
+          sh 'kubectl apply -f local-storage-class.yaml'
+        }
+      }
+    }
+    stage('Deploy PV') {
+      steps {
+          withKubeConfig([credentialsId: 'kubeconfig']) {
+          sh 'kubectl apply -f color-pv.yaml'
+        }
+      }
+    }
+    stage('Deploy PVC') {
+      steps {
+          withKubeConfig([credentialsId: 'kubeconfig']) {
+          sh 'kubectl apply -f color-pvc.yaml'
+        }
+      }
+    }
+    stage('Deploy web application') {
       steps {
           withKubeConfig([credentialsId: 'kubeconfig']) {
           sh 'cat color-deployment.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
