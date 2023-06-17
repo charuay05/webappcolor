@@ -32,6 +32,7 @@ def new_color(new_color):
 def read_file():
     f = open("/data/testfile.txt")
     contents = f.read()
+    print (contents)
     return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
 
 if __name__ == "__main__":
