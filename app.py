@@ -4,6 +4,7 @@ from flask import render_template
 import socket
 import random
 import os
+import datetime
 
 app = Flask(__name__)
 
@@ -32,8 +33,8 @@ def new_color(new_color):
 def read_file():
     f = open("/data/testfile.txt")
     contents = f.read()
-    print (contents)
-    return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
+    #return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
+    return render_template('index.html', utc_dt=datetime.datetime.utcnow())
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8082")
