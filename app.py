@@ -23,11 +23,11 @@ color = os.environ.get('APP_COLOR') or random.choice(["red","green","blue","blue
 def main():
     #return 'Hello'
     print(color)
-    return render_template('hello.html', name=socket.gethostname(), contents="tttttt", color=color_codes[color])
+    return render_template('hello.html', name=socket.gethostname(), color=color_codes[color])
     
 @app.route('/read_file')
 def read_file():
-    f = open("/data/testfile.txt")
+    f = open("//data/testfile.txt", "r")
     contents = f.read()
     return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
     #return render_template('index.html', utc_dt=datetime.datetime.utcnow())
