@@ -28,6 +28,13 @@ pipeline {
         }
       }
     }
+    stage('Port Forward') {
+      steps {
+          withKubeConfig([credentialsId: 'kubeconfig']) {
+          sh 'kubectl port-forward service/simple-webapp-color 30202:8282'
+        }
+      }
+    }
   }
   post {
     success {
