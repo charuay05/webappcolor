@@ -26,7 +26,7 @@ def main():
     
 @app.route('/read_file')
 def read_file():
-    f = open("c:\\requirements.txt", "r")
+    f = open("/service/requirements.txt")
     contents = f.read()
     return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
     #return render_template('index.html', utc_dt=datetime.datetime.utcnow())
