@@ -3,7 +3,6 @@ from flask import Flask
 from flask import render_template
 import socket
 import random
-import os
 import datetime
 
 app = Flask(__name__)
@@ -27,11 +26,18 @@ def main():
     
 @app.route('/read_file')
 def read_file():
-    f = open("/service/requirements.txt", "r")
-    contents = f.read()
-    return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
+    #f = open("/service/requirements.txt", "r")
+    #contents = f.read()
+    #return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
     #return render_template('index.html', utc_dt=datetime.datetime.utcnow())
+    try:
+        with open ("/service/requirements.txt") as file:
+            contents = file.read()
+            return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
+        
 
+    except FileNotFoundError:
+        print("File not found")    
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8082")
