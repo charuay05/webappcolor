@@ -31,7 +31,7 @@ def read_file():
     #return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
     #return render_template('index.html', utc_dt=datetime.datetime.utcnow())
     try:
-        with open ("/service/requirements.txt") as file:
+        with open ("./requirements.txt") as file:
             contents = file.read()
             return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
         
