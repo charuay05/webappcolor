@@ -18,11 +18,9 @@ color_codes = {
 
 color = os.environ.get('APP_COLOR') or random.choice(["red","green","blue","blue2","darkblue","pink"])
 
-
-    
 @app.route("/")
 def main():
-    f = open("/service/requirements.txt")
+    f = open("/data/testfile.txt")
     contents = f.read()
     return render_template('hello.html', name=socket.gethostname(), contents=contents, color=color_codes[color])
     #return render_template('index.html', utc_dt=datetime.datetime.utcnow())
