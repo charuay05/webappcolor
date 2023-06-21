@@ -3,7 +3,6 @@ from flask import Flask
 from flask import render_template
 import socket
 import random
-import os
 
 app = Flask(__name__)
 
@@ -16,11 +15,10 @@ color_codes = {
     "darkblue": "#130f40"
 }
 
-color = os.environ.get('APP_COLOR') or random.choice(["red","green","blue","blue2","darkblue","pink"])
+color = os.environ.get('APP_COLOR') or random.choice(["red", "green", "blue", "blue2", "darkblue", "pink"])
 
 @app.route("/")
 def main():
-    #return 'Hello'
     print(color)
     return render_template('hello.html', name=socket.gethostname(), color=color_codes[color])
 
